@@ -515,22 +515,22 @@
                     
                     <div class="result-item">
                         <span class="result-label">سعر الأونصة المدخل:</span>
-                        <span class="result-value" id="resultOuncePrice">--</span>
+                        <span class="result-value" id="resultOuncePrice">$--</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">سعر الجرام 24K:</span>
-                        <span class="result-value" id="resultGramPrice">--</span>
+                        <span class="result-value" id="resultGramPrice">$--</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">الذهب الخالص (عيار 24):</span>
-                        <span class="result-value" id="resultPureGold">--</span>
+                        <span class="result-value" id="resultPureGold">-- جرام</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">القيمة الإجمالية للذهب:</span>
-                        <span class="result-value" id="resultTotalValue">--</span>
+                        <span class="result-value" id="resultTotalValue">$--</span>
                     </div>
                     
                     <div class="result-item">
@@ -540,12 +540,12 @@
                     
                     <div class="result-item">
                         <span class="result-label">مقدار الزكاة (2.5%):</span>
-                        <span class="result-value" id="resultZakatGrams">--</span>
+                        <span class="result-value" id="resultZakatGrams">-- جرام</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">قيمة الزكاة بالدولار:</span>
-                        <span class="result-value" id="resultZakatValue">--</span>
+                        <span class="result-value" id="resultZakatValue">$--</span>
                     </div>
                 </div>
             </div>
@@ -584,16 +584,6 @@
             const karat = parseInt(document.querySelector('input[name="karat"]:checked').value);
             const ouncePriceUSD = parseFloat(ouncePriceInput.value) || 0;
 
-            if (ouncePriceUSD <= 0) {
-                alert("يرجى إدخال سعر صحيح لأونصة الذهب بالدولار.");
-                return;
-            }
-
-            if (weightGrams <= 0) {
-                alert("يرجى إدخال وزن صحيح للذهب.");
-                return;
-            }
-
             // حساب سعر الجرام 24K باستخدام الصيغة الصحيحة
             const pricePerGram24K = ouncePriceUSD / GRAMS_PER_TROY_OUNCE;
 
@@ -625,18 +615,17 @@
             );
         }
 
-        // دالة عرض النتائج - CORRIGÉE pour afficher plus de décimales
+        // دالة عرض النتائج
         function displayResults(ouncePrice, gramPrice, pureGold, totalValue, nisabReached, zakatGrams, zakatValue) {
             document.getElementById('resultOuncePrice').textContent = `$${ouncePrice.toFixed(2)}`;
             document.getElementById('resultGramPrice').textContent = `$${gramPrice.toFixed(2)}`;
-            document.getElementById('resultPureGold').textContent = `${pureGold.toFixed(3)} جرام`; // 3 décimales pour la pureté
+            document.getElementById('resultPureGold').textContent = `${pureGold.toFixed(3)} جرام`;
             document.getElementById('resultTotalValue').textContent = `$${totalValue.toFixed(2)}`;
 
             const nisabBadge = document.getElementById('nisabStatusBadge');
             if (nisabReached) {
                 nisabBadge.textContent = "✓ بلغ النصاب - الزكاة واجبة";
                 nisabBadge.className = 'nisab-met';
-                // CORRECTION : Afficher 3 décimales pour les grammes de zakat
                 document.getElementById('resultZakatGrams').textContent = `${zakatGrams.toFixed(3)} جرام`;
                 document.getElementById('resultZakatValue').textContent = `$${zakatValue.toFixed(2)}`;
             } else {
@@ -647,18 +636,10 @@
             }
         }
 
-        // تهيئة الصفحة
+        // تهيئة الصفحة - SEULEMENT le clic sur le bouton
         document.addEventListener('DOMContentLoaded', function() {
-            // الأحداث
+            // Événement seulement sur le bouton de calcul
             calculateBtn.addEventListener('click', calculateZakat);
-            document.getElementById('weight').addEventListener('input', calculateZakat);
-            ouncePriceInput.addEventListener('input', calculateZakat);
-            document.querySelectorAll('input[name="karat"]').forEach(radio => {
-                radio.addEventListener('change', calculateZakat);
-            });
-
-            // Calcul initial
-            calculateZakat();
         });
     </script>
 </body>
