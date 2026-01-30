@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة زكاة الذهب - SAAD JEWELRY BROS</title>
+    <title>حاسبة زكاة الذهب والفضة - SAAD JEWELRY BROS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -23,12 +23,12 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: #333;
             line-height: 1.6;
-            padding: 10px 20px; /* Réduit pour mobile */
+            padding: 10px 20px;
             min-height: 100vh;
         }
         
         .container {
-            max-width: 100%; /* Changé de 1100px à 100% */
+            max-width: 100%;
             margin: 0 auto;
             background-color: #fff;
             border-radius: 20px;
@@ -72,8 +72,68 @@
             font-weight: 400;
         }
         
+        .metal-selector {
+            margin: 20px auto 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+        }
+        
+        .metal-option {
+            flex: 1;
+        }
+        
+        .metal-option input[type="radio"] {
+            display: none;
+        }
+        
+        .metal-option label {
+            display: block;
+            padding: 15px 10px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            font-weight: 700;
+            font-size: 16px;
+            color: #2c3e50;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .metal-option label i {
+            margin-left: 8px;
+            font-size: 18px;
+        }
+        
+        .metal-option.gold label:hover {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffecb3 100%);
+            transform: translateY(-2px);
+        }
+        
+        .metal-option.silver label:hover {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4eaf3 100%);
+            transform: translateY(-2px);
+        }
+        
+        .metal-option input[type="radio"]:checked + label.gold-label {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #1a1a2e;
+            border-color: #b8941f;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .metal-option input[type="radio"]:checked + label.silver-label {
+            background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+            color: #2c3e50;
+            border-color: #a0a0a0;
+            box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4);
+        }
+        
         .content {
-            padding: 40px 30px;
+            padding: 30px;
             background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
         }
         
@@ -119,6 +179,16 @@
             font-size: 28px;
         }
         
+        .calculator.silver-calculator h2,
+        .calculator.silver-calculator .result-item {
+            color: #808080;
+            border-color: #c0c0c0;
+        }
+        
+        .calculator.silver-calculator h2 i {
+            color: #808080;
+        }
+        
         .input-group {
             margin-bottom: 25px;
         }
@@ -139,6 +209,10 @@
             font-size: 18px;
         }
         
+        .silver-calculator .input-group label i {
+            color: #808080;
+        }
+        
         .input-group input, .input-group select {
             width: 100%;
             padding: 16px 18px;
@@ -154,6 +228,11 @@
             outline: none;
             box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
             background: white;
+        }
+        
+        .silver-calculator .input-group input:focus {
+            border-color: #808080;
+            box-shadow: 0 0 0 4px rgba(128, 128, 128, 0.15);
         }
         
         .karat-options {
@@ -216,6 +295,16 @@
             box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
         }
         
+        .calculate-btn.silver-btn {
+            background: linear-gradient(135deg, #808080 0%, #c0c0c0 50%, #808080 100%);
+            box-shadow: 0 8px 20px rgba(128, 128, 128, 0.3);
+        }
+        
+        .calculate-btn.silver-btn:hover {
+            background: linear-gradient(135deg, #c0c0c0 0%, #808080 50%, #c0c0c0 100%);
+            box-shadow: 0 12px 30px rgba(128, 128, 128, 0.5);
+        }
+        
         .calculate-btn:active {
             transform: translateY(0);
         }
@@ -231,10 +320,12 @@
             border-right: 4px solid #d4af37;
         }
         
+        .silver-results .result-item {
+            border-right: 4px solid #c0c0c0;
+        }
+        
         .result-item:last-child {
-            border-bottom: none;
             margin-bottom: 0;
-            padding-bottom: 0;
         }
         
         .result-label {
@@ -249,6 +340,10 @@
             direction: ltr;
             text-align: left;
             font-size: 18px;
+        }
+        
+        .silver-results .result-value {
+            color: #808080;
         }
         
         .nisab-met {
@@ -287,6 +382,11 @@
             line-height: 1.8;
         }
         
+        .silver-calculator .manual-input-note {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border: 2px solid #808080;
+        }
+        
         .info-box {
             background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
             padding: 25px;
@@ -308,6 +408,16 @@
         .info-box p {
             margin-bottom: 12px;
             line-height: 1.8;
+        }
+        
+        .info-box ul {
+            margin-right: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .info-box li {
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
         
         .footer {
@@ -352,15 +462,15 @@
         /* Correction pour mobiles */
         @media (max-width: 768px) {
             body {
-                padding: 8px 12px; /* Réduire encore plus pour petits écrans */
+                padding: 8px 12px;
             }
             
             .container {
-                border-radius: 15px; /* Réduire légèrement les coins arrondis */
+                border-radius: 15px;
             }
             
             .content {
-                padding: 25px 15px; /* Réduire le padding interne */
+                padding: 25px 15px;
             }
             
             .calculator, .results {
@@ -372,7 +482,7 @@
             }
             
             .company-name {
-                font-size: 28px; /* Réduire la taille du titre principal */
+                font-size: 28px;
             }
             
             .location {
@@ -383,17 +493,22 @@
                 font-size: 22px;
             }
             
+            .metal-selector {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
             .calculator h2, .results h2 {
                 font-size: 20px;
             }
             
             .input-group input, .input-group select {
-                padding: 14px 16px; /* Réduire légèrement la taille des champs */
+                padding: 14px 16px;
                 font-size: 15px;
             }
             
             .karat-option label {
-                padding: 14px 8px; /* Ajuster les boutons d'option */
+                padding: 14px 8px;
                 font-size: 14px;
             }
             
@@ -438,12 +553,12 @@
             }
             
             .karat-options {
-                grid-template-columns: 1fr; /* Une colonne sur très petits écrans */
+                grid-template-columns: 1fr;
                 gap: 8px;
             }
             
             .result-item {
-                flex-direction: column; /* Empiler les labels et valeurs */
+                flex-direction: column;
                 align-items: flex-start;
                 gap: 5px;
             }
@@ -452,6 +567,10 @@
                 width: 100%;
             }
         }
+        
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -459,50 +578,62 @@
         <header>
             <div class="company-name">SAAD JEWELRY BROS</div>
             <div class="location">Barja, Lebanon, Tel:+96171175576</div>
-            <h1><i class="fas fa-calculator"></i> حاسبة زكاة الذهب </h1>
-            <p class="subtitle">حساب دقيق وموثوق لزكاة الذهب وفق الأسعار الحالية</p>
+            <h1><i class="fas fa-calculator"></i> حاسبة زكاة الذهب والفضة</h1>
+            <p class="subtitle">حساب دقيق وموثوق لزكاة الذهب والفضة وفق الأسعار الحالية</p>
+            
+            <div class="metal-selector">
+                <div class="metal-option gold">
+                    <input type="radio" id="metalGold" name="metalType" value="gold" checked>
+                    <label for="metalGold" class="gold-label"><i class="fas fa-crown"></i> زكاة الذهب</label>
+                </div>
+                <div class="metal-option silver">
+                    <input type="radio" id="metalSilver" name="metalType" value="silver">
+                    <label for="metalSilver" class="silver-label"><i class="fas fa-coins"></i> زكاة الفضة</label>
+                </div>
+            </div>
         </header>
 
         <div class="content">
-            <div class="calculator-container">
+            <!-- قسم الذهب -->
+            <div id="goldCalculator" class="calculator-container">
                 <div class="calculator">
                     <h2><i class="fas fa-pen-to-square"></i> إدخال بيانات الذهب</h2>
 
                     <div class="input-group">
-                        <label for="weight"><i class="fas fa-weight-hanging"></i> وزن الذهب (بالجرام)</label>
-                        <input type="number" id="weight" min="0" step="0.1" placeholder="أدخل الوزن بالجرام" value="85">
+                        <label for="goldWeight"><i class="fas fa-weight-hanging"></i> وزن الذهب (بالجرام)</label>
+                        <input type="number" id="goldWeight" min="0" step="0.1" placeholder="أدخل الوزن بالجرام" value="">
                     </div>
 
                     <div class="input-group">
                         <label><i class="fas fa-gem"></i> عيار الذهب</label>
                         <div class="karat-options">
                             <div class="karat-option">
-                                <input type="radio" id="karat24" name="karat" value="24" checked>
+                                <input type="radio" id="karat24" name="goldKarat" value="24" checked>
                                 <label for="karat24">عيار 24</label>
                             </div>
                             <div class="karat-option">
-                                <input type="radio" id="karat22" name="karat" value="22">
+                                <input type="radio" id="karat22" name="goldKarat" value="22">
                                 <label for="karat22">عيار 22</label>
                             </div>
                             <div class="karat-option">
-                                <input type="radio" id="karat21" name="karat" value="21">
+                                <input type="radio" id="karat21" name="goldKarat" value="21">
                                 <label for="karat21">عيار 21</label>
                             </div>
                             <div class="karat-option">
-                                <input type="radio" id="karat18" name="karat" value="18">
+                                <input type="radio" id="karat18" name="goldKarat" value="18">
                                 <label for="karat18">عيار 18</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label for="ouncePriceInput"><i class="fas fa-dollar-sign"></i> سعر أونصة الذهب (24K) بالدولار</label>
-                        <input type="number" id="ouncePriceInput" min="0" step="0.01" placeholder="أدخل السعر الحالي للأونصة" value="2860.00">
+                        <label for="goldOuncePrice"><i class="fas fa-dollar-sign"></i> سعر أونصة الذهب (24K) بالدولار</label>
+                        <input type="number" id="goldOuncePrice" min="0" step="0.01" placeholder="أدخل السعر الحالي للأونصة" value="2860.00">
                         <div class="conversion-info"> أونصة تروي = 31.1035 جرام (معيار عالمي)</div>
                     </div>
 
-                    <button class="calculate-btn" id="calculateBtn">
-                        <i class="fas fa-calculator"></i> احسب الزكاة الآن
+                    <button class="calculate-btn" id="calculateGoldBtn">
+                        <i class="fas fa-calculator"></i> احسب زكاة الذهب
                     </button>
 
                     <div class="manual-input-note">
@@ -510,81 +641,183 @@
                     </div>
                 </div>
 
-                <div class="results" id="resultsSection">
-                    <h2><i class="fas fa-chart-line"></i> نتائج حساب الزكاة</h2>
+                <div class="results" id="goldResultsSection">
+                    <h2><i class="fas fa-chart-line"></i> نتائج زكاة الذهب</h2>
                     
                     <div class="result-item">
                         <span class="result-label">سعر الأونصة المدخل:</span>
-                        <span class="result-value" id="resultOuncePrice">$--</span>
+                        <span class="result-value" id="goldResultOuncePrice">$--</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">سعر الجرام 24K:</span>
-                        <span class="result-value" id="resultGramPrice">$--</span>
+                        <span class="result-value" id="goldResultGramPrice">$--</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">الذهب الخالص (عيار 24):</span>
-                        <span class="result-value" id="resultPureGold">-- جرام</span>
+                        <span class="result-value" id="goldResultPureGold">-- جرام</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">القيمة الإجمالية للذهب:</span>
-                        <span class="result-value" id="resultTotalValue">$--</span>
+                        <span class="result-value" id="goldResultTotalValue">$--</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">حالة النصاب (85 جرام):</span>
-                        <span id="nisabStatusBadge" class="nisab-status">--</span>
+                        <span id="goldNisabStatusBadge" class="nisab-status">--</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">مقدار الزكاة (2.5%):</span>
-                        <span class="result-value" id="resultZakatGrams">-- جرام</span>
+                        <span class="result-value" id="goldResultZakatGrams">-- جرام</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">قيمة الزكاة بالدولار:</span>
-                        <span class="result-value" id="resultZakatValue">$--</span>
+                        <span class="result-value" id="goldResultZakatValue">$--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم الفضة -->
+            <div id="silverCalculator" class="calculator-container hidden">
+                <div class="calculator silver-calculator">
+                    <h2><i class="fas fa-pen-to-square"></i> إدخال بيانات الفضة</h2>
+
+                    <div class="input-group">
+                        <label for="silverWeight"><i class="fas fa-weight-hanging"></i> وزن الفضة (بالجرام)</label>
+                        <input type="number" id="silverWeight" min="0" step="0.1" placeholder="أدخل الوزن بالجرام" value="">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="silverPurity"><i class="fas fa-star"></i> درجة النقاء</label>
+                        <select id="silverPurity">
+                            <option value="999">فضة نقية 999 (99.9%)</option>
+                            <option value="925">فضة إسترليني 925 (92.5%)</option>
+                            <option value="900">فضة قياسية 900 (90%)</option>
+                            <option value="800">فضة 800 (80%)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="silverOuncePrice"><i class="fas fa-dollar-sign"></i> سعر أونصة الفضة بالدولار</label>
+                        <input type="number" id="silverOuncePrice" min="0" step="0.01" placeholder="أدخل السعر الحالي للأونصة" value="80">
+                        <div class="conversion-info"> أونصة تروي = 31.1035 جرام (معيار عالمي)</div>
+                    </div>
+
+                    <button class="calculate-btn silver-btn" id="calculateSilverBtn">
+                        <i class="fas fa-calculator"></i> احسب زكاة الفضة
+                    </button>
+
+                    <div class="manual-input-note">
+                        <strong><i class="fas fa-lightbulb"></i> نصيحة مهمة:</strong> للحصول على سعر الأونصة الحالي بالدولار، يمكنك الرجوع إلى مواقع متخصصة موثوقة مثل <strong>bullionbypost.eu</strong> أو <strong>silverprice.org</strong>.
+                    </div>
+                </div>
+
+                <div class="results silver-results" id="silverResultsSection">
+                    <h2><i class="fas fa-chart-line"></i> نتائج زكاة الفضة</h2>
+                    
+                    <div class="result-item">
+                        <span class="result-label">سعر الأونصة المدخل:</span>
+                        <span class="result-value" id="silverResultOuncePrice">$--</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">سعر الجرام:</span>
+                        <span class="result-value" id="silverResultGramPrice">$--</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">الفضة النقية:</span>
+                        <span class="result-value" id="silverResultPureSilver">-- جرام</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">القيمة الإجمالية للفضة:</span>
+                        <span class="result-value" id="silverResultTotalValue">$--</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">حالة النصاب (595 جرام):</span>
+                        <span id="silverNisabStatusBadge" class="nisab-status">--</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">مقدار الزكاة (2.5%):</span>
+                        <span class="result-value" id="silverResultZakatGrams">-- جرام</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">قيمة الزكاة بالدولار:</span>
+                        <span class="result-value" id="silverResultZakatValue">$--</span>
                     </div>
                 </div>
             </div>
 
             <div class="info-box">
                 <h3><i class="fas fa-info-circle"></i> كيف يتم حساب الزكاة؟</h3>
-                <p><strong>1. سعر الجرام 24K:</strong> يتم حسابه بقسمة سعر الأونصة على 31.1035 (عدد الجرامات في الأونصة الواحدة).</p>
-                <p><strong>2. الذهب الخالص:</strong> يتم تحويل وزن الذهب حسب العيار إلى ما يعادله من عيار 24.</p>
-                <p><strong>3. قيمة الذهب:</strong> تحسب بضرب وزن الذهب الخالص في سعر الجرام.</p>
-                <p><strong>4. النصاب:</strong> الحد الأدنى لوجوب الزكاة هو 85 جراماً من الذهب الخالص (عيار 24).</p>
-                <p><strong>5. مقدار الزكاة:</strong> 2.5% من قيمة الذهب إذا بلغ النصاب وحال عليه الحول (سنة قمرية).</p>
+                <p><strong>زكاة الذهب:</strong></p>
+                <ul>
+                    <li><strong>سعر الجرام 24K:</strong> يتم حسابه بقسمة سعر الأونصة على 31.1035 (عدد الجرامات في الأونصة الواحدة).</li>
+                    <li><strong>الذهب الخالص:</strong> يتم تحويل وزن الذهب حسب العيار إلى ما يعادله من عيار 24.</li>
+                    <li><strong>النصاب:</strong> الحد الأدنى لوجوب الزكاة هو 85 جراماً من الذهب الخالص (عيار 24).</li>
+                    <li><strong>مقدار الزكاة:</strong> 2.5% من قيمة الذهب إذا بلغ النصاب وحال عليه الحول (سنة قمرية).</li>
+                </ul>
+                
+                <p><strong>زكاة الفضة:</strong></p>
+                <ul>
+                    <li><strong>سعر الجرام:</strong> يتم حسابه بقسمة سعر الأونصة على 31.1035.</li>
+                    <li><strong>الفضة النقية:</strong> يتم حساب الوزن الفعلي حسب درجة النقاء.</li>
+                    <li><strong>النصاب:</strong> الحد الأدنى لوجوب الزكاة هو 595 جراماً من الفضة النقية.</li>
+                    <li><strong>مقدار الزكاة:</strong> 2.5% من قيمة الفضة إذا بلغ النصاب وحال عليه الحول (سنة قمرية).</li>
+                </ul>
+                
+                <p><strong>ملاحظة مهمة:</strong> إذا كان لديك ذهب وفضة معاً، فيجب جمع قيمتهما معاً لتحديد إذا ما بلغت النصاب، ثم تحسب الزكاة على المجموع.</p>
             </div>
         </div>
 
         <div class="footer">
             <div class="footer-logo">SAAD JEWELRY BROS</div>
             <p>Barja, Lebanon</p>
-            <p>هذه الأداة للمساعدة في حساب زكاة الذهب - للتفاصيل الشرعية يرجى استشارة عالم دين</p>
+            <p>هذه الأداة للمساعدة في حساب زكاة الذهب والفضة - للتفاصيل الشرعية يرجى استشارة عالم دين</p>
             <p>© 2026 - جميع الحقوق محفوظة</p>
         </div>
     </div>
 
     <script>
-        // العناصر الأساسية
-        const calculateBtn = document.getElementById('calculateBtn');
-        const ouncePriceInput = document.getElementById('ouncePriceInput');
-
         // الثوابت الحسابية
         const GRAMS_PER_TROY_OUNCE = 31.1035;
-        const NISAB_GRAMS = 85;
+        const GOLD_NISAB_GRAMS = 85;
+        const SILVER_NISAB_GRAMS = 595;
         const ZAKAT_RATE = 0.025;
 
-        // دالة الحساب الرئيسية
-        function calculateZakat() {
-            const weightGrams = parseFloat(document.getElementById('weight').value) || 0;
-            const karat = parseInt(document.querySelector('input[name="karat"]:checked').value);
-            const ouncePriceUSD = parseFloat(ouncePriceInput.value) || 0;
+        // عناصر DOM
+        const metalTypeRadios = document.querySelectorAll('input[name="metalType"]');
+        const goldCalculator = document.getElementById('goldCalculator');
+        const silverCalculator = document.getElementById('silverCalculator');
+        
+        // أحداث التبديل بين الذهب والفضة
+        metalTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'gold') {
+                    goldCalculator.classList.remove('hidden');
+                    silverCalculator.classList.add('hidden');
+                } else {
+                    goldCalculator.classList.add('hidden');
+                    silverCalculator.classList.remove('hidden');
+                }
+            });
+        });
 
-            // حساب سعر الجرام 24K باستخدام الصيغة الصحيحة
+        // دالة حساب زكاة الذهب
+        function calculateGoldZakat() {
+            const weightGrams = parseFloat(document.getElementById('goldWeight').value) || 0;
+            const karat = parseInt(document.querySelector('input[name="goldKarat"]:checked').value);
+            const ouncePriceUSD = parseFloat(document.getElementById('goldOuncePrice').value) || 0;
+
+            // حساب سعر الجرام 24K
             const pricePerGram24K = ouncePriceUSD / GRAMS_PER_TROY_OUNCE;
 
             // حساب كمية الذهب الخالص
@@ -594,7 +827,7 @@
             const totalGoldValueUSD = pureGoldGrams * pricePerGram24K;
 
             // تحديد وجوب الزكاة
-            const nisabReached = pureGoldGrams >= NISAB_GRAMS;
+            const nisabReached = pureGoldGrams >= GOLD_NISAB_GRAMS;
             let zakatGrams = 0;
             let zakatValueUSD = 0;
 
@@ -604,7 +837,7 @@
             }
 
             // عرض النتائج
-            displayResults(
+            displayGoldResults(
                 ouncePriceUSD,
                 pricePerGram24K,
                 pureGoldGrams,
@@ -615,33 +848,95 @@
             );
         }
 
-        // دالة عرض النتائج
-        function displayResults(ouncePrice, gramPrice, pureGold, totalValue, nisabReached, zakatGrams, zakatValue) {
-            document.getElementById('resultOuncePrice').textContent = `$${ouncePrice.toFixed(2)}`;
-            document.getElementById('resultGramPrice').textContent = `$${gramPrice.toFixed(2)}`;
-            document.getElementById('resultPureGold').textContent = `${pureGold.toFixed(3)} جرام`;
-            document.getElementById('resultTotalValue').textContent = `$${totalValue.toFixed(2)}`;
+        // دالة عرض نتائج الذهب
+        function displayGoldResults(ouncePrice, gramPrice, pureGold, totalValue, nisabReached, zakatGrams, zakatValue) {
+            document.getElementById('goldResultOuncePrice').textContent = `$${ouncePrice.toFixed(2)}`;
+            document.getElementById('goldResultGramPrice').textContent = `$${gramPrice.toFixed(2)}`;
+            document.getElementById('goldResultPureGold').textContent = `${pureGold.toFixed(3)} جرام`;
+            document.getElementById('goldResultTotalValue').textContent = `$${totalValue.toFixed(2)}`;
 
-            const nisabBadge = document.getElementById('nisabStatusBadge');
+            const nisabBadge = document.getElementById('goldNisabStatusBadge');
             if (nisabReached) {
                 nisabBadge.textContent = "✓ بلغ النصاب - الزكاة واجبة";
                 nisabBadge.className = 'nisab-met';
-                document.getElementById('resultZakatGrams').textContent = `${zakatGrams.toFixed(3)} جرام`;
-                document.getElementById('resultZakatValue').textContent = `$${zakatValue.toFixed(2)}`;
+                document.getElementById('goldResultZakatGrams').textContent = `${zakatGrams.toFixed(3)} جرام`;
+                document.getElementById('goldResultZakatValue').textContent = `$${zakatValue.toFixed(2)}`;
             } else {
                 nisabBadge.textContent = "✗ لم يبلغ النصاب - لا زكاة";
                 nisabBadge.className = 'nisab-not-met';
-                document.getElementById('resultZakatGrams').textContent = "0 جرام";
-                document.getElementById('resultZakatValue').textContent = "$0.00";
+                document.getElementById('goldResultZakatGrams').textContent = "0 جرام";
+                document.getElementById('goldResultZakatValue').textContent = "$0.00";
             }
         }
 
-        // تهيئة الصفحة - SEULEMENT le clic sur le bouton
+        // دالة حساب زكاة الفضة
+        function calculateSilverZakat() {
+            const weightGrams = parseFloat(document.getElementById('silverWeight').value) || 0;
+            const purity = parseInt(document.getElementById('silverPurity').value);
+            const ouncePriceUSD = parseFloat(document.getElementById('silverOuncePrice').value) || 0;
+
+            // حساب سعر الجرام
+            const pricePerGram = ouncePriceUSD / GRAMS_PER_TROY_OUNCE;
+
+            // حساب كمية الفضة النقية
+            const pureSilverGrams = weightGrams * (purity / 1000);
+
+            // حساب القيمة الإجمالية
+            const totalSilverValueUSD = pureSilverGrams * pricePerGram;
+
+            // تحديد وجوب الزكاة
+            const nisabReached = pureSilverGrams >= SILVER_NISAB_GRAMS;
+            let zakatGrams = 0;
+            let zakatValueUSD = 0;
+
+            if (nisabReached) {
+                zakatGrams = pureSilverGrams * ZAKAT_RATE;
+                zakatValueUSD = zakatGrams * pricePerGram;
+            }
+
+            // عرض النتائج
+            displaySilverResults(
+                ouncePriceUSD,
+                pricePerGram,
+                pureSilverGrams,
+                totalSilverValueUSD,
+                nisabReached,
+                zakatGrams,
+                zakatValueUSD
+            );
+        }
+
+        // دالة عرض نتائج الفضة
+        function displaySilverResults(ouncePrice, gramPrice, pureSilver, totalValue, nisabReached, zakatGrams, zakatValue) {
+            document.getElementById('silverResultOuncePrice').textContent = `$${ouncePrice.toFixed(2)}`;
+            document.getElementById('silverResultGramPrice').textContent = `$${gramPrice.toFixed(2)}`;
+            document.getElementById('silverResultPureSilver').textContent = `${pureSilver.toFixed(3)} جرام`;
+            document.getElementById('silverResultTotalValue').textContent = `$${totalValue.toFixed(2)}`;
+
+            const nisabBadge = document.getElementById('silverNisabStatusBadge');
+            if (nisabReached) {
+                nisabBadge.textContent = "✓ بلغ النصاب - الزكاة واجبة";
+                nisabBadge.className = 'nisab-met';
+                document.getElementById('silverResultZakatGrams').textContent = `${zakatGrams.toFixed(3)} جرام`;
+                document.getElementById('silverResultZakatValue').textContent = `$${zakatValue.toFixed(2)}`;
+            } else {
+                nisabBadge.textContent = "✗ لم يبلغ النصاب - لا زكاة";
+                nisabBadge.className = 'nisab-not-met';
+                document.getElementById('silverResultZakatGrams').textContent = "0 جرام";
+                document.getElementById('silverResultZakatValue').textContent = "$0.00";
+            }
+        }
+
+        // تهيئة الصفحة
         document.addEventListener('DOMContentLoaded', function() {
-            // Événement seulement sur le bouton de calcul
-            calculateBtn.addEventListener('click', calculateZakat);
+            // أحداث الأزرار
+            document.getElementById('calculateGoldBtn').addEventListener('click', calculateGoldZakat);
+            document.getElementById('calculateSilverBtn').addEventListener('click', calculateSilverZakat);
+            
+            // حساب تلقائي عند تحميل الصفحة
+            calculateGoldZakat();
+            calculateSilverZakat();
         });
     </script>
 </body>
 </html>
-
