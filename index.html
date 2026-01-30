@@ -13,16 +13,22 @@
             font-family: 'Segoe UI', 'Tahoma', Geneva, Verdana, sans-serif;
         }
         
+        /* Correction pour éviter le débordement horizontal */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
         body {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: #333;
             line-height: 1.6;
-            padding: 20px;
+            padding: 10px 20px; /* Réduit pour mobile */
             min-height: 100vh;
         }
         
         .container {
-            max-width: 1100px;
+            max-width: 100%; /* Changé de 1100px à 100% */
             margin: 0 auto;
             background-color: #fff;
             border-radius: 20px;
@@ -341,6 +347,110 @@
         
         .results {
             animation-delay: 0.2s;
+        }
+
+        /* Correction pour mobiles */
+        @media (max-width: 768px) {
+            body {
+                padding: 8px 12px; /* Réduire encore plus pour petits écrans */
+            }
+            
+            .container {
+                border-radius: 15px; /* Réduire légèrement les coins arrondis */
+            }
+            
+            .content {
+                padding: 25px 15px; /* Réduire le padding interne */
+            }
+            
+            .calculator, .results {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 25px 20px;
+            }
+            
+            .company-name {
+                font-size: 28px; /* Réduire la taille du titre principal */
+            }
+            
+            .location {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            .calculator h2, .results h2 {
+                font-size: 20px;
+            }
+            
+            .input-group input, .input-group select {
+                padding: 14px 16px; /* Réduire légèrement la taille des champs */
+                font-size: 15px;
+            }
+            
+            .karat-option label {
+                padding: 14px 8px; /* Ajuster les boutons d'option */
+                font-size: 14px;
+            }
+            
+            .calculate-btn {
+                padding: 18px;
+                font-size: 18px;
+            }
+            
+            .info-box {
+                padding: 20px;
+            }
+            
+            .info-box h3 {
+                font-size: 20px;
+            }
+            
+            .footer {
+                padding: 25px 15px;
+            }
+            
+            .footer-logo {
+                font-size: 20px;
+            }
+        }
+
+        /* Correction pour très petits mobiles */
+        @media (max-width: 480px) {
+            .company-name {
+                font-size: 24px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            .calculator h2, .results h2 {
+                font-size: 18px;
+            }
+            
+            .karat-options {
+                grid-template-columns: 1fr; /* Une colonne sur très petits écrans */
+                gap: 8px;
+            }
+            
+            .result-item {
+                flex-direction: column; /* Empiler les labels et valeurs */
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .result-label, .result-value {
+                width: 100%;
+            }
         }
     </style>
 </head>
